@@ -121,7 +121,7 @@ extension StreamedFile {
         let length = MemoryLayout<T>.size
         let data = try readData(offset: offset, length: length)
         return data.withUnsafeBytes {
-            $0.load(as: T.self)
+            $0.loadUnaligned(as: T.self)
         }
     }
 
@@ -325,7 +325,7 @@ extension StreamedFileSlice {
         let length = MemoryLayout<T>.size
         let data = try readData(offset: offset, length: length)
         return data.withUnsafeBytes {
-            $0.load(as: T.self)
+            $0.loadUnaligned(as: T.self)
         }
     }
 
